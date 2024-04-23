@@ -1,0 +1,37 @@
+<!-- 
+    Esto va a extender del archivo base.html y debemos indicar que
+    queremos que se muestre dentro de bloque de content
+-->
+{% extends 'base.html' %}
+
+<!-- esto le dira al editor que todo lo que este en este bloque quede
+dentro de block content -->
+{% block content %}
+<h1>Productos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Stock</th>
+      <th>Puntaje</th>
+      <th>Categoria</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for producto in productos %}
+    <tr>
+      <td>
+        <a href="{% url 'productos:detalle' producto.id %}">
+          {{ producto.nombre }}
+        </a>
+      </td>
+      <td>{{ producto.stock }}</td>
+      <td>{{ producto.puntaje }}</td>
+      <td>{{ producto.categoria }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
