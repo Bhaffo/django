@@ -41,12 +41,11 @@ def formulario(request):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/productos')
-        else:
-            form = ProductoForm()
+    else:
+        form = ProductoForm()
 
-    form = ProductoForm()
     return render(
         request,
         'producto_form.html',
-        {'form': form}
+        context={'form': form}
     )
